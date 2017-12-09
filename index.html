@@ -1,0 +1,213 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>CS171 - Final Project</title>
+
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/jquery.fullPage.css">
+    <link rel="stylesheet" href="css/nouislider.css">
+
+    <!--fonts-->
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Amatic+SC"/>
+    <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Dekko' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Kalam' rel='stylesheet'>
+
+	<!-- Load JS libraries -->
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/queue.min.js"></script>
+	<script src="js/topojson.js"></script>
+	<script src="js/d3.min.js"></script>
+	<script src="js/d3-tip.js"></script>
+	<script src="js/jquery.fullPage.js"></script>
+	<script src="js/main.js"></script>
+    <script src="js/nouislider.min.js"></script>
+    <script src="js/wNumb.js"></script>
+
+</head>
+
+<body>
+
+	<div id="fullpage">
+
+		<!--Slide 1: Title Page-->
+		<!--Storytelling logic: Striking visualization engages reading and set the topic of the website-->
+		<section class="section">
+			<h1>Parting the clouds</h1>
+            <h3>Alex Lin, Dylan de Waart, Ryan Davey</h3>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-3">
+						<div id="pulse1"></div>
+					</div>
+					<div class="col-md-6">
+						<br><br><br><br><br><br><br><br><br>
+
+						<h2 id="seconds-20">Every 2 seconds someone attempts suicide</h2>
+						<h2 id="seconds-40">Every 40 seconds someone takes their life</h2>
+					</div>
+				</div>
+
+				<h2>If you or someone you know is in a dark place, follow along with us. We want to help you part the clouds. </h2>
+				<!--Nice-to-have: Text types out in front of you or fades in, as if in a conversation)-->
+			</div>
+		</section>
+
+		<!--Slide 2: Statistical Overview of Thoughts, Plans, and Attempts-->
+		<!--Storytelling Logic: Destigmitize thoughts, plans, and attempts of suicide. Understand statistics across gender, ages, and years. Transition to 'Therapy' part of website-->
+		<section class="section">
+			<div class="container">
+				<h1>Thoughts, plans, and attempts at taking your own life are common</h1>
+				<!--<h3>Explore the prevalence below.</h3>-->
+				<div class = "row">
+					<div class = "form-group">
+						<div class="form-inline col-md-12">
+							<label for="data-type">Display time series for U.S. data on </label>
+							<select class="form-control" id="data-type" onchange="updateLineChart(), hideBarChart()">
+								<option value="THOUGHT">Suicidal Thought</option>
+								<option value="PLAN">Suicidal Plan</option>
+								<option value="ATTEMPT">Suicidal Attempt</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="col-md-12" id="legend2">
+                        <br>
+						<div class="legend"> <p class="gender"><span class="key-dot total"></span>Total</p> </div>
+						<div class="legend"> <p class="gender"><span class="key-dot male"></span>Male</p> </div>
+						<div class="legend"> <p class="gender"><span class="key-dot female"></span>Female</p> </div>
+					</div>
+
+				</div>
+
+				<div id = "toggle" class = "row">
+					<div id="chart-area" class ="col-md-6"></div>
+
+                    <div id = "background" class ="col-md-6">
+                        <h2 style="text-align: left">Many of us struggle. Accepting that is the first step towards a solution.</h2>
+                        <h2 style="text-align: left" >Click on a <span style="color:lightblue; font-weight: bold;">dot</span> on the left to explore data for a given year.</h2>
+                    </div>
+				</div>
+
+				<div class="col-md-6">
+					<div id = "slider-tooltips"></div>
+				</div>
+			</div>
+		</section>
+
+		<!--Slide 3: You Are Not Alone (Emotion)-->
+		<!--Storytelling Logic: Reaffirm visitors that their feelings are valid and that they aren't alone in this experience. Innovative visualization personalizes statistics and aims to have an emotional impact-->
+		<section class="section">
+			<div class="container">
+				<h1>How Are You Feeling?</h1>
+				<!--<p>(Nice-to-have: Text types out in front of you, as if in a conversation)</p>-->
+				<div class="row">
+					<div class="col-md-4" >
+						<h4 style="text-align: center; margin: 30px;">
+							Select an Emotion
+						</h4>
+						<div class="btn-group-vertical" id="vis2-buttons" style="margin: auto; display: block; width: 60%">
+						</div>
+
+					</div>
+					<div class="col-md-7">
+						<br>
+						<div id="dots" ></div>
+					</div>
+				</div>
+				<div class="row">
+					<h2>
+						<span class="not-alone" style="font-weight: 900">You Are Not Alone. </span>
+						<span class="not-alone" id="vis2-caption"></span>
+					</h2>
+				</div>
+
+			</div>
+		</section>
+
+		<!--Slide 4: It Gets Better-->
+		<!--Storytelling Logic: Establish hope-->
+		<section class="section" id = 'cloud'>
+			<div class="container">
+				<h1>It Gets Better</h1>
+				<br><br><br>
+				<h2 class="storm1">All storms pass. Even the most brutal ones. And they will pass faster than you think.</h2>
+				<br><br><br>
+				<h2 class="storm2">According to Stumbling on Happiness by Harvard professor Daniel Gilbert, human beings tend to mispredict their own emotional responses to future events.</h2>
+				<br><br><br>
+				<h2 class="storm3">On average, bad events proved less intense and more transient than test participants predicted.</h2>
+			</div>
+		</section>
+
+		<!--Slide 5: Provide Resources-->
+		<!--Storytelling Logic: Guide visitors to physical resources in their area-->
+		<section class="section">
+			<div class="container">
+				<h1>Help is in Reach</h1>
+				<br><br>
+				<h5 class="g-hed">Mental Health Facilities by US State</h5>
+				<div class="row">
+					<div class="col-md-8" id="column1">
+						<div id="national-chart"></div>
+					</div>
+					<div class="col-md-4" id="column2">
+						<div class="row">
+							<div class="col-md-4" id="column3"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+        <!--Slide 6: More Resources-->
+        <section class="section" id='cloud2'>
+            <div class="container">
+                <h1>Connect through stories</h1>
+                <br><br>
+				<div class ="row">
+					<div class="card col-md-4">
+						<img src="img/daisy.jpg" alt="Avatar" style="width:90%;margin-left: 5%">
+						<div class="card-container">
+							<h2><b>Hope & Recovery</b></h2>
+							<h3 style="text-align: left">Read stories from survivors from the National Suicide Prevention Lifeline</h3>
+							<a style="font-size: 20px" href='https://suicidepreventionlifeline.org/stories/'>Read these stories</a>
+						</div>
+					</div>
+					<div class="card col-md-4">
+						<img src="img/bluebonnet.jpg" alt="Avatar" style="width:90%;margin-left: 5%">
+						<div class="card-container">
+							<h2><b>Resilience</b></h2>
+							<h3 style="text-align: left">Find out how people build resilience after different types of adversities from Option B</h3>
+							<a style="font-size: 20px" href="https://optionb.org/stories">Read these stories</a>
+						</div>
+					</div>
+					<div class="card col-md-4">
+						<img src="img/plum.jpg" alt="Avatar" style="width:90%;margin-left: 5%">
+						<div class="card-container">
+							<h2><b>Make a difference</b></h2>
+							<h3 style="text-align: left">Listen to a counselor tell the story about his interactions with a caller from the Moth</h3>
+							<a style="font-size: 20px" href="https://themoth.org/stories/perfect-moments">Listen to this story</a>
+						</div>
+					</div>
+				</div>
+            </div>
+        </section>
+
+
+	</div>
+
+	<script src="js/vis1.js"></script>
+	<script src="js/vis2visualization.js"></script>
+	<script src="js/vis2.js"></script>
+	<script src="js/vis3.js"></script>
+	<script src="js/vis4.js"></script>
+
+
+</body>
+</html>

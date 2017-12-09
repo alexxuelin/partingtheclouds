@@ -1,0 +1,273 @@
+/***********************/
+/*  PALETTE REFERENCE  */
+/***********************/
+
+/*purple for titles: #94618E*/
+/*light gray: lightgray*/
+/*brick red: #CC3300*/
+/*olive green: olivedrab*/
+/*light blue: lightblue*/
+
+/****************/
+/*  VIS 2 CSS  */
+/****************/
+* {
+    font-family: "Dekko";
+}
+
+.section {
+    color: #616161;
+}
+
+img {
+    height: 300px;
+    width: auto;
+}
+
+h1 {
+    font-size: 50px;
+    font-family: "Kalam";
+    color: #94618E;
+
+}
+
+/****************/
+/*  VIS 2 CSS  */
+/****************/
+#not-alone {
+    font-family: arial, helvetica, sans-serif;
+    font-size: 25px;
+    font-weight:bold;
+}
+
+/****************/
+/*  VIS 3 CSS  */
+/****************/
+
+#edition {
+    font-weight: bold;
+}
+
+th, td {
+    border-bottom: 1px solid #ddd;
+}
+
+td {
+    height: 30px;
+    vertical-align: center;
+}
+
+
+h1, h3 {
+    text-align: center;
+}
+
+/****************/
+/*  LINE CHART  */
+/****************/
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #000;
+    stroke-width: 2px;
+    shape-rendering: crispEdges;
+}
+
+.tick text {
+    font-weight: 250;
+    font-size: 12px;
+}
+
+
+.barlabels {
+    font-weight: 250;
+    font-size: 12px;
+}
+
+label {
+    font-size: 20px;
+}
+
+#legend2{
+    font-size: 20px;
+}
+
+.form-control {
+    font-size: 20px;
+}
+
+
+.tooltip-circle {
+    fill: #96AB96;
+}
+
+
+text {
+    font-weight: 200;
+    font-size: 20px;
+}
+
+.chart-title, .chart-title-r {
+    font-size: 25px;
+    font-weight: 300px;
+}
+
+
+/*********************/
+/*  TOOLTIP OVERLAY  */
+/*********************/
+
+.tooltip-title {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.d3-tip {
+    line-height: 1;
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    border-radius: 2px;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+    box-sizing: border-box;
+    display: inline;
+    font-size: 15px;
+    width: 100%;
+    line-height: 1;
+    color: rgba(0, 0, 0, 0.8);
+    content: "\25BC";
+    position: absolute;
+    text-align: center;
+}
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+    margin: -1px 0 0 0;
+    top: 100%;
+    left: 0;
+}
+
+/*********************/
+/*  LINE CHART LEGEND  */
+/*********************/
+/*HTML Horizonal Legend*/
+.gender {
+    margin: 0 !important;
+}
+.key-dot {
+    display: inline-block;
+    height: 18px;
+    margin-right: .5em;
+    width: 18px;
+}
+
+.male { background: #CC3300 ;}
+.female { background: olivedrab;}
+.total { background: #94618E;}
+
+#legend{
+    overflow:hidden;
+}
+.legend {
+    float:left;
+    margin-right: 1em;
+}
+
+.line {
+    fill: none;
+    stroke: #94618E;
+    stroke-width: 4.5px;
+}
+
+.mline {
+    fill: none;
+    stroke: #CC3300;
+    stroke-width: 3px;
+    stroke-dasharray: 3,3;
+}
+
+.fline {
+    fill: none;
+    stroke: olivedrab;
+    stroke-width: 3px;
+    stroke-dasharray: 3,3;
+}
+
+.dot {
+    fill: lightgray;
+}
+
+/*********************/
+/*  ROWS  */
+/*********************/
+/*********************/
+.row {
+    padding: 1em;
+}
+
+/*********************/
+/*  VIS 4 LEGEND  */
+/*********************/
+
+/* Legend Position Style */
+.vis4legend {
+    position:absolute;
+    left:20px;
+    top:30px;
+}
+
+.axis text {
+    font: 12px;
+    font-weight: 250;
+}
+
+.axis line, .axis path {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+
+/*********************/
+/*  IT GETS BETTER  */
+/*********************/
+
+
+section#cloud, section#cloud2 {
+    background-image: url(../img/watercolor-clouds.jpg);
+    padding: 6% 0 0 0;
+}
+
+.storm1, .storm2, .storm3 {
+    /*color: #94618E;*/
+    color: #94618E;
+    font-weight: bolder;
+    background-color: rgba(255,255,255,.4);
+    /*background-color: rgba(173,216,230,.5);*/
+    text-align: left;
+}
+
+
+/*********************/
+/* read more stories*/
+/*********************/
+.card {
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    padding: 2px;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+/* Add some padding inside the card container */
+.card-container {
+    padding: 2px 16px;
+}
