@@ -31,9 +31,7 @@ h1 {
 
 }
 
-/****************/
-/*  VIS 2 CSS  */
-/****************/
+
 #not-alone {
     font-family: arial, helvetica, sans-serif;
     font-size: 25px;
@@ -202,10 +200,6 @@ text {
     fill: lightgray;
 }
 
-/*********************/
-/*  ROWS  */
-/*********************/
-/*********************/
 .row {
     padding: 1em;
 }
@@ -242,7 +236,7 @@ section#cloud, section#cloud2 {
     padding: 6% 0 0 0;
 }
 
-.storm1, .storm2, .storm3 {
+#storm1, #storm2, #storm3 {
     /*color: #94618E;*/
     color: #94618E;
     font-weight: bolder;
@@ -271,3 +265,9 @@ section#cloud, section#cloud2 {
 .card-container {
     padding: 2px 16px;
 }
+
+
+/*********************/
+/* animate texts *****/
+/*********************/
+
