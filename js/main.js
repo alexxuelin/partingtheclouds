@@ -6,7 +6,6 @@ var firstTime = true;
 // var colorScheme = ['#a6cee3','#1f78b4','#b2df8a','#33a02c','#fb9a99','#e31a1c','#fdbf6f','#ff7f00','#cab2d6','#6a3d9a']
 var colorScheme = ['#94618E', '#8c96c6', '#b3cde3', '#b2e2e2', '#66c2a4','#2ca25f','#006d2c', '#08519c', '#3182bd','#6baed6']
 
-
 $(document).ready(function() {
     $('#fullpage').fullpage({
         navigation: true,
