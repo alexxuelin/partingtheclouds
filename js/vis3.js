@@ -39,7 +39,6 @@ function loadmaleData() {
         });
         // Store csv data in global variable
         male = csv;
-        console.log(male);
     });
 }
 
@@ -55,7 +54,6 @@ function loadfemaleData() {
         });
         // Store csv data in global variable
         female = csv;
-        console.log(female);
     });
 }
 
@@ -68,7 +66,6 @@ d3.csv("data/Vis3/byage.csv", function(error, byage) {
     });
 
     bar_data = byage;
-    console.log(bar_data);
 });
 
 
@@ -86,7 +83,6 @@ function loadtotalData() {
         });
         // Store csv data in global variable
         data = csv;
-        console.log(data);
 
         // Draw the visualization for the first time
         updateLineChart();
@@ -108,7 +104,6 @@ function updateLineChart() {
 
     // get option for data type
     var option = d3.select("#data-type").property('value');
-    console.log(option);
 
     var startyr = tooltipSlider.noUiSlider.get()[0];
     var endyr = tooltipSlider.noUiSlider.get()[1];

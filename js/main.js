@@ -69,7 +69,7 @@ $(document).ready(function() {
                             setTimeout(typeWriter_i, speed);
                         }
                     }
-                }
+                };
 
                 if (document.getElementById("storm2").innerHTML.length == 0){
                     var j = 0;
@@ -83,12 +83,11 @@ $(document).ready(function() {
                             setTimeout(typeWriter_j, speed);
                         }
                     }
-                }
+                };
 
                 if (document.getElementById("storm3").innerHTML.length == 0){
                     var l = 0;
                     var txtl = "On average, bad events proved less intense and more transient than test participants predicted.";
-
                     setTimeout(typeWriter_l, 7000);
                     function typeWriter_l() {
                         if (l < txtl.length) {
@@ -97,8 +96,7 @@ $(document).ready(function() {
                             setTimeout(typeWriter_l, speed);
                         }
                     }
-                }
-                
+                };
 
             }
             if(index == 5){

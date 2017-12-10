@@ -12,7 +12,7 @@ function loadDataVis2 () {
 
 
         data.forEach(function(d, i) {
-            //console.log(d);
+
             answers.push({});
             answers[i].emotion = data[i].Emotion;
             answers[i].dots = +data[i].Dots;
@@ -22,7 +22,6 @@ function loadDataVis2 () {
 
         // create buttons to select emotion felt
         answers.forEach(function(d, i) {
-            console.log(d.emotion, i);
             d3.select("#vis2-buttons")
                 .append('button')
                 .attr("type", "button")
