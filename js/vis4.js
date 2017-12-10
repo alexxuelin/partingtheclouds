@@ -1,19 +1,41 @@
 //Width, height of map, set zoom active state
-var widthv4 = 960,
-    heightv4 = 500,
+var widthv4 = 700,
+    heightv4 = 470,
     active = d3.select(null);
 
 // set bounds on choropleth colors
-var lowColorv4 = '#f9f9f9';
-var highColorv4 = '#bc2a66';
+var lowColorv4 = '#fff';
+var highColorv4 = '#6b8e23';
+// var lowColorv4 = '#f9f9f9';
+// var highColorv4 = 'olivedrab';
 
 //declaring example data
 var floridaData = [];
-//var stateData = [];
+
+//declaring state data
+var alaskaData, alabamaData, arkansasData, arizonaData,
+    californiaData, coloradoData, connecticutData,
+    districtOfColumbiaData, delawareData,
+    georgiaData, hawaiiData, iowaData, idahoData,
+    illinoisData, indianaData, kansasData,
+    kentuckyData, louisianaData, massachusettsData,
+    marylandData, maineData, michiganData,
+    minnesotaData, missouriData, mississippiData,
+    montanaData, northCarolinaData, northDakotaData,
+    nebraskaData, newHampshireData, newJerseyData,
+    newMexicoData, nevadaData, newYorkData,
+    ohioData, oregonData, oklahomaData,
+    pennsylvaniaData, rhodeIslandData, southCarolinaData,
+    southDakotaData, tennesseeData, texasData, utahData,
+    virginiaData, vermontData, washingtonData,
+    wisconsinData, westVirginiaData, wyomingData = [];
+
+//declaring chosen state data
+var chosenStateData = [];
 
 // Define path generator
 var projection = d3.geoAlbersUsa() // updated for d3 v4
-    .scale(1000)
+    .scale(900)
     .translate([widthv4 / 2, heightv4 / 2]);
 
 var zoom = d3.zoom()
@@ -34,7 +56,7 @@ var svgv4 = d3.select("#national-chart").append("svg")
     .on("click", stopped, true);
 
 svgv4.append("rect")
-    .attr("class", "background")
+    .attr("class", "backgroundv4")
     .attr("width", widthv4)
     .attr("height", heightv4)
     .on("click", reset);
@@ -46,11 +68,11 @@ svgv4.call(zoom); // delete this line to disable free zooming
 
 // define tool tip parameters
 var tool_tip = d3.tip()
-    .attr("class", "d3-tip4")
+    .attr("class", "d3-tipv4")
     .offset([-8, 0])
     .html(function(d) {
-        return d.name1;
-        console.log(name1);
+        return d.TITLE;
+        console.log(TITLE);
     });
 svgv4.call(tool_tip);
 
@@ -82,6 +104,12 @@ var stateDataArray = [{state: "Alaska", symbol: "AK", value: 0},{state: "Alabama
 d3.csv("data/vis4/healthfacilities.csv", function(data) {
 
     data.forEach(function(d){
+        d.STATE = d.state;
+        d.TITLE = d.name1;
+        d.ADDR = d.street1;
+        d.WEBSITE = d.website;
+        d.PHONE = d.phone;
+
         if(d.tt == "1"){
             d.TRAUMA = "Yes";
         }
@@ -132,6 +160,7 @@ d3.csv("data/vis4/healthfacilities.csv", function(data) {
         // brute force back up option
         if (d.state == "AK") {
             stateDataArray[0].value += 1;
+            ALASKA = data;
         }
         else if (d.state == "AL") {
             stateDataArray[1].value += 1;
@@ -286,6 +315,7 @@ d3.csv("data/vis4/healthfacilities.csv", function(data) {
 
     });
 
+    console.log(ALASKA);
     // setting value array for choropleth
     var valueArray = [];
 
@@ -293,11 +323,72 @@ d3.csv("data/vis4/healthfacilities.csv", function(data) {
         valueArray.push(d.value);
     });
 
-    data.forEach(function(d){
-        if(d.state =="FL"){
-            floridaData.push(d);
-        }
-    });
+
+    //brute force to the max
+    alaskaData = data.filter(function(d){ return d.state == "AK"; });
+    alabamaData = data.filter(function(d){ return d.state == "AL"; });
+    arkansasData = data.filter(function(d){ return d.state == "AK"; });
+    arizonaData = data.filter(function(d){ return d.state == "AZ"; });
+    californiaData = data.filter(function(d){ return d.state == "CA"; });
+    coloradoData = data.filter(function(d){ return d.state == "CO"; });
+    connecticutData = data.filter(function(d){ return d.state == "CT"; });
+    districtOfColumbiaData = data.filter(function(d){ return d.state == "DC"; });
+    delawareData = data.filter(function(d){ return d.state == "DE"; });
+    floridaData = data.filter(function(d){ return d.state == "FL"; });
+    georgiaData = data.filter(function(d){ return d.state == "GA"; });
+    hawaiiData = data.filter(function(d){ return d.state == "HI"; });
+    iowaData = data.filter(function(d){ return d.state == "IA"; });
+    idahoData = data.filter(function(d){ return d.state == "ID"; });
+    illinoisData = data.filter(function(d){ return d.state == "IL"; });
+    indianaData = data.filter(function(d){ return d.state == "IN"; });
+    kansasData = data.filter(function(d){ return d.state == "KS"; });
+    kentuckyData = data.filter(function(d){ return d.state == "KY"; });
+    louisianaData = data.filter(function(d){ return d.state == "LA"; });
+    massachusettsData = data.filter(function(d){ return d.state == "MA"; });
+    marylandData = data.filter(function(d){ return d.state == "MD"; });
+    maineData = data.filter(function(d){ return d.state == "ME"; });
+    michiganData = data.filter(function(d){ return d.state == "MI"; });
+    minnesotaData = data.filter(function(d){ return d.state == "MN"; });
+    missouriData = data.filter(function(d){ return d.state == "MO"; });
+    mississippiData = data.filter(function(d){ return d.state == "MS"; });
+    montanaData = data.filter(function(d){ return d.state == "MT"; });
+    northCarolinaData = data.filter(function(d){ return d.state == "NC"; });
+    northDakotaData = data.filter(function(d){ return d.state == "ND"; });
+    nebraskaData = data.filter(function(d){ return d.state == "NE"; });
+    newHampshireData = data.filter(function(d){ return d.state == "NH"; });
+    newJerseyData = data.filter(function(d){ return d.state == "NJ"; });
+    newMexicoData = data.filter(function(d){ return d.state == "NM"; });
+    nevadaData = data.filter(function(d){ return d.state == "NV"; });
+    newYorkData = data.filter(function(d){ return d.state == "NY"; });
+    ohioData = data.filter(function(d){ return d.state == "OH"; });
+    oklahomaData = data.filter(function(d){ return d.state == "OK"; });
+    oregonData = data.filter(function(d){ return d.state == "OR"; });
+    pennsylvaniaData = data.filter(function(d){ return d.state == "PA"; });
+    rhodeIslandData = data.filter(function(d){ return d.state == "RI"; });
+    southCarolinaData = data.filter(function(d){ return d.state == "SC"; });
+    southDakotaData = data.filter(function(d){ return d.state == "SD"; });
+    tennesseeData = data.filter(function(d){ return d.state == "TN"; });
+    texasData = data.filter(function(d){ return d.state == "TX"; });
+    utahData = data.filter(function(d){ return d.state == "UT"; });
+    virginiaData = data.filter(function(d){ return d.state == "VA"; });
+    vermontData = data.filter(function(d){ return d.state == "VT"; });
+    washingtonData = data.filter(function(d){ return d.state == "WA"; });
+    wisconsinData = data.filter(function(d){ return d.state == "WI"; });
+    westVirginiaData = data.filter(function(d){ return d.state == "WV"; });
+    wyomingData = data.filter(function(d){ return d.state == "WY"; });
+
+
+    console.log(hawaiiData);
+    // console.log(alabamaData);
+    // console.log(arkansasData);
+    // console.log(arizonaData);
+    // console.log(californiaData);
+    // console.log(coloradoData);
+    // console.log(connecticutData);
+    // console.log(districtOfColumbiaData);
+    // console.log(delawareData);
+    // console.log(floridaData);
+    // console.log(georgiaData);
 
     // debugging
 //        console.log(stateDataArray);
@@ -422,6 +513,65 @@ d3.csv("data/vis4/healthfacilities.csv", function(data) {
 
 function clicked(d) {
 
+    var name = d.properties["abbr"];
+    console.log(name);
+
+    if (name == "AK") { chosenStateData = alaskaData; }
+    else if (name == "AL") { chosenStateData = alabamaData; }
+    else if (name == "AR") { chosenStateData = arkansasData; }
+    else if (name == "AZ") { chosenStateData = arizonaData; }
+    else if (name == "CA") { chosenStateData = californiaData; }
+    else if (name == "CO") { chosenStateData = coloradoData; }
+    else if (name == "CT") { chosenStateData = connecticutData; }
+    else if (name == "DC") { chosenStateData = districtOfColumbiaData; }
+    else if (name == "DE") { chosenStateData = delawareData; }
+    else if (name == "FL") { chosenStateData = floridaData; }
+    else if (name == "GA") { chosenStateData = georgiaData; }
+    else if (name == "HI") { chosenStateData = hawaiiData; }
+    else if (name == "IA") { chosenStateData = iowaData; }
+    else if (name == "ID") { chosenStateData = idahoData; }
+    else if (name == "IL") { chosenStateData = illinoisData; }
+    else if (name == "IN") { chosenStateData = indianaData; }
+    else if (name == "KS") { chosenStateData = kansasData; }
+    else if (name == "KY") { chosenStateData = kentuckyData; }
+    else if (name == "LA") { chosenStateData = louisianaData; }
+    else if (name == "MA") { chosenStateData = massachusettsData; }
+    else if (name == "MD") { chosenStateData = marylandData; }
+    else if (name == "ME") { chosenStateData = maineData; }
+    else if (name == "MI") { chosenStateData = michiganData; }
+    else if (name == "MN") { chosenStateData = minnesotaData; }
+    else if (name == "MO") { chosenStateData = missouriData; }
+    else if (name == "MS") { chosenStateData = mississippiData; }
+    else if (name == "MT") { chosenStateData = montanaData; }
+    else if (name == "NC") { chosenStateData = northCarolinaData; }
+    else if (name == "ND") { chosenStateData = northDakotaData; }
+    else if (name == "NE") { chosenStateData = nebraskaData; }
+    else if (name == "NH") { chosenStateData = newHampshireData; }
+    else if (name == "NJ") { chosenStateData = newJerseyData; }
+    else if (name == "NM") { chosenStateData = newMexicoData; }
+    else if (name == "NV") { chosenStateData = nevadaData; }
+    else if (name == "NY") { chosenStateData = newYorkData; }
+    else if (name == "OH") { chosenStateData = ohioData; }
+    else if (name == "OR") { chosenStateData = oregonData; }
+    else if (name == "OK") { chosenStateData = oklahomaData; }
+    else if (name == "PA") { chosenStateData = pennsylvaniaData; }
+    else if (name == "RI") { chosenStateData = rhodeIslandData; }
+    else if (name == "SC") { chosenStateData = southCarolinaData; }
+    else if (name == "SD") { chosenStateData = southDakotaData; }
+    else if (name == "TN") { chosenStateData = tennesseeData; }
+    else if (name == "TX") { chosenStateData = texasData; }
+    else if (name == "UT") { chosenStateData = utahData; }
+    else if (name == "VA") { chosenStateData = virginiaData; }
+    else if (name == "VT") { chosenStateData = vermontData; }
+    else if (name == "WA") { chosenStateData = washingtonData; }
+    else if (name == "WI") { chosenStateData = wisconsinData; }
+    else if (name == "WV") { chosenStateData = westVirginiaData; }
+    else if (name == "WY") { chosenStateData = wyomingData; }
+
+    // g.selectAll("circle")
+    //     .attr("class", "circlev4")
+    //     .attr("opacity", 0.8)
+    g.selectAll("circle").classed("active", true);
 
     if (active.node() === this) return reset();
     active.classed("active", false);
@@ -441,7 +591,7 @@ function clicked(d) {
         .call( zoom.transform, d3.zoomIdentity.translate(translate[0],translate[1]).scale(scalev4) ); // updated for d3 v4
 
     // extra: showing circles for each facility
-    floridaData.forEach(function(d) {
+    chosenStateData.forEach(function(d) {
         // convert variables into numeric form
         d.latitude = d.latitude;
         //console.log(d.latitude);
@@ -449,37 +599,55 @@ function clicked(d) {
         //console.log(d.longitude);
     });
     // Draw circles
-    g.selectAll("circle")
-        .data(floridaData)
-        .enter()
-        .append("circle")
-        .attr("class", "circlev4")
-        .attr("r", 1)
-        .attr("transform", function(d) {
-            return "translate(" + projection([d.longitude, d.latitude]) + ")";
-        })
-        .on("mouseover", function(d){
-            console.log("MOUSEOVER");
-            tool_tip.show;
-        })
-        .on("mouseout", function(d){
-            console.log("MOUSEOUT");
-            tool_tip.hide;
-        })
-        .on("click", function(d){
+    // create circles and append data
+    var circle = g.selectAll("circle")
+        .data(chosenStateData);
 
+    circle.enter().append("circle")
+        .attr("class", "circlev4")
+        .merge(circle)
+        .on("click", function(d){
+            //console.log(d.name1);
             // appending building information to column 3
             // TRAUMA SPS PRS CMHC PTSD SMA
             document.getElementById("column3").innerHTML =
-                "<table>" +
-                "<tr><td> Facility: " + d.name + "</td></tr>"+
-                "<tr><td> State Mental Health Authority?: " + d.SMA + "</td></tr>" +
-                "<tr><td> Community Mental Health Center?: " + d.CMHC + "</td></tr>" +
-                "<tr><td> Psychosocial rehabilitation services?: " + d.PRS + "</td></tr>" +
-                "<tr><td> Suicide prevention services?: " + d.SPS + "</td></tr>" +
-                "<tr><td> Trauma therapy?: " + d.TRAUMA + "</td></tr>" +
-                "<tr><td> PTSD services?: " + d.PTSD + "</td></tr>" + "</table>";
+                "<table width=\"550\">" +
+                "<tr><td>" +'<span style="color:yellow">' + 'Facility: ' + '</span>' + d.TITLE + "</td></tr>"+
+                "<tr><td>" +'<span style="color:yellow">' + 'Address: ' + '</span>' + d.ADDR + "</td></tr>"+
+                "<tr><td>" +'<span style="color:yellow">' + 'Website: ' + '</span>' + d.WEBSITE + "</td></tr>"+
+                "<tr><td>" +'<span style="color:yellow">' + 'Phone Number: ' + '</span>' + d.PHONE + "</td></tr>"+
+                "<tr><td>" +'<span style="color:yellow">' + 'State Mental Health Authority: ' + '</span>' + d.SMA + "</td></tr>"+
+                "<tr><td>" +'<span style="color:yellow">' + 'Community Mental Health Center: ' + '</span>' + d.CMHC + "</td></tr>"+
+                "<tr><td>" +'<span style="color:yellow">' + 'Psychosocial rehabilitation services: ' + '</span>' + d.PRS + "</td></tr>"+
+                "<tr><td>" +'<span style="color:yellow">' + 'Suicide prevention services: ' + '</span>' + d.SPS + "</td></tr>"+
+                "<tr><td>" +'<span style="color:yellow">' + 'Trauma therapy: ' + '</span>' + d.TRAUMA + "</td></tr>"+
+                "<tr><td>" +'<span style="color:yellow">' + 'PTSD services: ' + '</span>' + d.PTSD + "</td></tr>"+  "</table>";
+        //         "<tr><td> Address: " + d.ADDR + "</td></tr>" +
+        //         "<tr><td> Website: " + d.WEBSITE + "</td></tr>" +
+        //         "<tr><td> Phone Number: " + d.PHONE + "</td></tr>" +
+        //         "<tr><td> State Mental Health Authority: " + d.SMA + "</td></tr>" +
+        //         "<tr><td> Community Mental Health Center: " + d.CMHC + "</td></tr>" +
+        //         "<tr><td> Psychosocial rehabilitation services: " + d.PRS + "</td></tr>" +
+        //         "<tr><td> Suicide prevention services: " + d.SPS + "</td></tr>" +
+        //         "<tr><td> Trauma therapy: " + d.TRAUMA + "</td></tr>" +
+        //         "<tr><td> PTSD services: " + d.PTSD + "</td></tr>" + "</table>";
+        })
+        .on("mouseover", tool_tip.show)
+        .on("mouseout", tool_tip.hide)
+        .transition()
+        .duration(200)
+        .attr("r", 1)
+        .attr("opacity", 0.8)
+        .attr("transform", function(d) {
+            return "translate(" + projection([d.longitude, d.latitude]) + ")";
         });
+
+    svg.call(tool_tip);
+
+    circle.exit().remove();
+
+
+
 
     //svgv4.call(tool_tip);
 
@@ -488,6 +656,11 @@ function clicked(d) {
 }
 
 function reset() {
+
+    g.selectAll("circle")
+        .attr("class", "circlev4")
+        .attr("opacity", 0);
+
     active.classed("active", false);
     active = d3.select(null);
 
@@ -498,7 +671,7 @@ function reset() {
 }
 
 function zoomed() {
-    g.style("stroke-width", 1.5 / d3.event.transform.k + "px");
+    g.style("stroke-width", 2 / d3.event.transform.k + "px");
     // g.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")"); // not in d3 v4
     g.attr("transform", d3.event.transform); // updated for d3 v4
 }

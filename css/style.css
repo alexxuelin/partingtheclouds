@@ -204,27 +204,6 @@ text {
     padding: 1em;
 }
 
-/*********************/
-/*  VIS 4 LEGEND  */
-/*********************/
-
-/* Legend Position Style */
-.vis4legend {
-    position:absolute;
-    left:20px;
-    top:30px;
-}
-
-.axis text {
-    font: 12px;
-    font-weight: 250;
-}
-
-.axis line, .axis path {
-    fill: none;
-    stroke: #000;
-    shape-rendering: crispEdges;
-}
 
 /*********************/
 /*  IT GETS BETTER  */
@@ -267,7 +246,159 @@ section#cloud, section#cloud2 {
 }
 
 
+
 /*********************/
-/* animate texts *****/
+/*  VIS 4 STYLES  */
 /*********************/
 
+/* Legend Position Style */
+.vis4legend {
+    position:absolute;
+    left:20px;
+    top:30px;
+}
+
+.axis4 text {
+    font: 12px;
+    font-weight: 250;
+}
+
+.axis4 line, .axis path {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+
+
+.backgroundv4 {
+    fill: white;
+    pointer-events: all;
+}
+
+.feature {
+    /*fill: #ccc;*/
+    cursor: pointer;
+}
+
+.feature.active {
+    fill: orange;
+}
+
+.mesh {
+    fill: none;
+    stroke: #fff;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.circlev4{
+    fill: lightblue;
+    stroke: #94618E;
+    /*opacity: 0.8;*/
+}
+
+.d3-tipv4 {
+    line-height: 1;
+    padding: 6px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tipv4:after {
+    box-sizing: border-box;
+    display: inline;
+    font-size: 10px;
+    width: 100%;
+    line-height: 1;
+    color: rgba(0, 0, 0, 0.8);
+    content: "\25BC";
+    position: absolute;
+    text-align: center;
+}
+
+/* Style northward tooltips specifically */
+.d3-tipv4.n:after {
+    margin: -2px 0 0 0;
+    top: 100%;
+    left: 0;
+}
+
+
+.blue { color: #94618E; }
+.yellow { color: lightblue; }
+
+.container th h1 {
+    font-weight: bold;
+    font-size: 1em;
+    text-align: left;
+    color: #94618E;
+}
+
+.container td {
+    font-weight: normal;
+    font-size: 1em;
+    -webkit-box-shadow: 0 2px 2px -2px #94618E;
+    -moz-box-shadow: 0 2px 2px -2px #94618E;
+    box-shadow: 0 2px 2px -2px #94618E;
+}
+
+.container {
+    text-align: left;
+    overflow: hidden;
+    width: 80%;
+    margin: 0 auto;
+    display: table;
+    padding: 0 0 8em 0;
+}
+
+.container td, .container th {
+    padding-bottom: 2%;
+    padding-top: 2%;
+    padding-left:2%;
+}
+
+/* Background-color of the odd rows */
+.container tr:nth-child(odd) {
+    background-color: #94618E;
+}
+
+/* Background-color of the even rows */
+.container tr:nth-child(even) {
+    background-color: #94618E;
+    /*background-color: #AE7BA8;*/
+}
+
+.container th {
+    background-color: #1F2739;
+}
+
+.container td:first-child { color: #FFFFFF; }
+
+.container tr:hover {
+    background-color: lightblue;
+    -webkit-box-shadow: 0 6px 6px -6px #0E1119;
+    -moz-box-shadow: 0 6px 6px -6px #0E1119;
+    box-shadow: 0 6px 6px -6px #0E1119;
+}
+
+.container td:hover {
+    background-color: lightblue;
+    color: #403E10;
+    font-weight: bold;
+
+    box-shadow: #FFFFFF -1px 1px, #FFFFFF -2px 2px, #FFFFFF -3px 3px, #FFFFFF -4px 4px, #FFFFFF -5px 5px, #FFFFFF -6px 6px;
+    transform: translate3d(6px, -6px, 0);
+
+    transition-delay: 0s;
+    transition-duration: 0.4s;
+    transition-property: all;
+    transition-timing-function: line;
+}
+
+@media (max-width: 800px) {
+    .container td:nth-child(4),
+    .container th:nth-child(4) { display: none; }
+}
