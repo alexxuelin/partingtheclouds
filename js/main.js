@@ -3,7 +3,6 @@ var backgroundColor = "white";
 var firstTime = true;
 
 // credit for colorScheme: colorbrewer2.org
-// var colorScheme = ['#a6cee3','#1f78b4','#b2df8a','#33a02c','#fb9a99','#e31a1c','#fdbf6f','#ff7f00','#cab2d6','#6a3d9a']
 var colorScheme = ['#94618E', '#8c96c6', '#b3cde3', '#b2e2e2', '#66c2a4','#2ca25f','#006d2c', '#08519c', '#3182bd','#6baed6']
 
 $(document).ready(function() {
@@ -55,6 +54,7 @@ $(document).ready(function() {
                 vis2.updateVis(-1);
             }
             if(index == 4){
+                // only typewrite texts when they are not already on the page
                 if (document.getElementById("storm1").innerHTML.length == 0 && document.getElementById("storm2").innerHTML.length == 0 && document.getElementById("storm3").innerHTML.length == 0){
                     var speed = 40;
                     var i = 0;
@@ -90,46 +90,6 @@ $(document).ready(function() {
                     }
                 }
 
-                //     var speed = 40;
-                // if (document.getElementById("storm1").innerHTML.length == 0 && document.getElementById("storm2").innerHTML.length == 0 && document.getElementById("storm3").innerHTML.length == 0){
-                //     var i = 0;
-                //     var txt = "All storms pass. Even the most brutal ones. And they will pass faster than you think.";
-                //     typeWriter_i();
-                //     function typeWriter_i() {
-                //         if (i < txt.length) {
-                //             document.getElementById("storm1").innerHTML += txt.charAt(i);
-                //             i++;
-                //             setTimeout(typeWriter_i, speed);
-                //         }
-                //     }
-                // };
-                //
-                // if (document.getElementById("storm2").innerHTML.length == 0 && document.getElementById("storm3").innerHTML.length == 0){
-                //     var j = 0;
-                //     var txtj = "According to Stumbling on Happiness by Harvard professor Daniel Gilbert, human beings tend to mispredict their own emotional responses to future events.";
-                //     setTimeout(typeWriter_j, 4000);
-                //     function typeWriter_j() {
-                //         if (j < txtj.length) {
-                //             document.getElementById("storm2").innerHTML += txtj.charAt(j);
-                //             j++;
-                //             setTimeout(typeWriter_j, speed);
-                //         }
-                //     }
-                // };
-                //
-                // if (document.getElementById("storm3").innerHTML.length == 0){
-                //     var l = 0;
-                //     var txtl = "On average, bad events proved less intense and more transient than test participants predicted.";
-                //     setTimeout(typeWriter_l, 10000);
-                //     function typeWriter_l() {
-                //         if (l < txtl.length) {
-                //             document.getElementById("storm3").innerHTML += txtl.charAt(l);
-                //             l++;
-                //             setTimeout(typeWriter_l, speed);
-                //         }
-                //     }
-                // };
-
             }
             if(index == 5){
                 // Actions after loading section for page 5
@@ -148,14 +108,11 @@ $(document).ready(function() {
         onSlideLeave: function( anchorLink, index, slideAnchor, slideIndex){
             var loadedSlide = $(this);
 
-
             // Actions and animimations to be started on loading section of a page
-
 
             if(index == 1){
                 // Actions after loading section for page 1
             }
-
             if(index == 2){
                 // Actions after loading section for page 2
             }
@@ -171,7 +128,6 @@ $(document).ready(function() {
             if(index == 6){
                 // Actions after loading section for page 6
             }
-
             if(index == 7){
                 // Actions after loading section for page 7
             }
@@ -179,7 +135,6 @@ $(document).ready(function() {
 
         }
     });
-
 
 });
 
