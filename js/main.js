@@ -7,6 +7,8 @@ var colorScheme = ['#94618E', '#8c96c6', '#b3cde3', '#b2e2e2', '#66c2a4','#2ca25
 
 $(document).ready(function() {
     $('#fullpage').fullpage({
+        scrollOverflow: true,
+        responsiveWidth: 900,
         navigation: true,
         anchors: ['Page1', 'Page2', 'Page3', 'Page4', 'Page5', 'Page6', 'Page7'],
         verticalCentered: false,
@@ -54,11 +56,15 @@ $(document).ready(function() {
                 vis2.updateVis(-1);
             }
             if(index == 4){
-                // only typewrite texts when they are not already on the page
-                if (document.getElementById("storm1").innerHTML.length == 0 && document.getElementById("storm2").innerHTML.length == 0 && document.getElementById("storm3").innerHTML.length == 0){
-                    var speed = 40;
+
+                var speed = 40;
+                if (document.getElementById("storm1").innerHTML.length == 0 ){
                     var i = 0;
-                    var txt = "All storms pass. Even the most brutal ones. And they will pass faster than you think.";
+                    var txt = "All storms pass. Even the most brutal ones. And they will pass faster than you think." +
+                        "\n" +
+                        "According to Stumbling on Happiness by Harvard professor Daniel Gilbert, human beings tend to mispredict their own emotional responses to future events." +
+                        "\n" +
+                        "On average, bad events proved less intense and more transient than test participants predicted.";
                     typeWriter_i();
                     function typeWriter_i() {
                         if (i < txt.length) {
@@ -67,28 +73,7 @@ $(document).ready(function() {
                             setTimeout(typeWriter_i, speed);
                         }
                     }
-                    var j = 0;
-                    var txtj = "According to Stumbling on Happiness by Harvard professor Daniel Gilbert, human beings tend to mispredict their own emotional responses to future events.";
-                    setTimeout(typeWriter_j, 4000);
-                    function typeWriter_j() {
-                        if (j < txtj.length) {
-                            document.getElementById("storm2").innerHTML += txtj.charAt(j);
-                            j++;
-                            setTimeout(typeWriter_j, speed);
-                        }
-                    }
-
-                    var l = 0;
-                    var txtl = "On average, bad events proved less intense and more transient than test participants predicted.";
-                    setTimeout(typeWriter_l, 11000);
-                    function typeWriter_l() {
-                        if (l < txtl.length) {
-                            document.getElementById("storm3").innerHTML += txtl.charAt(l);
-                            l++;
-                            setTimeout(typeWriter_l, speed);
-                        }
-                    }
-                }
+                };
 
             }
             if(index == 5){

@@ -25,10 +25,12 @@
 	<script src="js/topojson.js"></script>
 	<script src="js/d3.min.js"></script>
 	<script src="js/d3-tip.js"></script>
-	<script src="js/jquery.fullPage.js"></script>
 	<script src="js/main.js"></script>
     <script src="js/nouislider.min.js"></script>
     <script src="js/wNumb.js"></script>
+    <script src="js/jquery.fullPage.js"></script>
+    <script src="js/scrolloverflow.min.js"></script>
+
 
 </head>
 
@@ -36,26 +38,27 @@
 
 	<div id="fullpage">
 
-		<!--Slide 1: Title Page-->
-		<!--Storytelling logic: Striking visualization engages reading and set the topic of the website-->
-		<section class="section">
-			<h1>Parting the clouds</h1>
+        <!--Slide 1: Title Page-->
+        <!--Storytelling logic: Striking visualization engages reading and set the topic of the website-->
+        <section class="section">
+            <h1>Parting the clouds</h1>
             <h3>Alex Lin, Dylan de Waart, Ryan Davey</h3>
-			<div class="container">
-				<div class="row">
-					<div class="col-md-3">
-						<div id="pulse1"></div>
-					</div>
-					<div class="col-md-6">
-						<br><br><br><br><br><br><br><br><br>
-						<h2 id="seconds-20">Every 2 seconds someone attempts suicide</h2>
-						<h2 id="seconds-40">Every 40 seconds someone takes their life</h2>
-					</div>
-				</div>
-				<h2 id = "typewritter"></h2>
-				<!--Nice-to-have: Text types out in front of you or fades in, as if in a conversation)-->
-			</div>
-		</section>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div id="pulse1"></div>
+                    </div>
+                    <div class="col-md-6">
+                        <br><br><br><br><br><br><br><br><br>
+                        <h2 id="seconds-20">Every 2 seconds someone attempts suicide</h2>
+                        <h2 id="seconds-40">Every 40 seconds someone takes their life</h2>
+                    </div>
+                </div>
+                <h2 id = "typewritter" style = "margin-top: 0;"></h2>
+
+            </div>
+        </section>
+
 
 		<!--Slide 2: Statistical Overview of Thoughts, Plans, and Attempts-->
 		<!--Storytelling Logic: Destigmitize thoughts, plans, and attempts of suicide. Understand statistics across gender, ages, and years. Transition to 'Therapy' part of website-->
@@ -85,7 +88,12 @@
 				</div>
 
 				<div id = "toggle" class = "row">
-					<div id="chart-area" class ="col-md-6"></div>
+					<div class ="col-md-6">
+						<div class="col-sm-12" id="chart-area"></div>
+						<div class="col-sm-12">
+                            <div id = "slider-tooltips"></div>
+                        </div>
+					</div>
 
                     <div id = "background" class ="col-md-6">
                         <h2 style="text-align: left">Many of us struggle. Accepting that is the first step towards a solution.</h2>
@@ -93,9 +101,6 @@
                     </div>
 				</div>
 
-				<div class="col-md-6">
-					<div id = "slider-tooltips"></div>
-				</div>
 			</div>
 		</section>
 
@@ -129,39 +134,53 @@
 			</div>
 		</section>
 
-		<!--Slide 4: It Gets Better-->
-		<!--Storytelling Logic: Establish hope-->
-		<section class="section" id = 'cloud'>
-			<div class="container">
-				<h1>It Gets Better</h1>
-				<br><br><br>
-				<h2 id="storm1"></h2>
-				<br><br><br>
-				<h2 id="storm2"></h2>
-				<br><br><br>
-				<h2 id="storm3"></h2>
-			</div>
-		</section>
+
+        <section class="section " id="section0">
+            <video id="myVideo" loop muted data-autoplay>
+                <source src="img/water.mp4" type="video/mp4">
+            </video>
+            <div class="layer">
+                <h1 style = "color: white;">It Gets Better</h1>
+                <br><br><br>
+                <div class="col-md-2" >
+                </div>
+                <div class="col-md-8" >
+                    <i id="quote-left" class="fa fa-quote-left fa-4x" aria-hidden="true"></i>
+                    <h2 id="storm1"></h2>
+                    <div class="text-right">
+                        <i id="quote-right" class="fa fa-quote-right fa-4x" aria-hidden="true" ></i>
+                    </div>
+                    <br><br><br>
+                </div>
+            </div>
+        </section>
+
+
 
 		<!--Slide 5: Provide Resources-->
 		<!--Storytelling Logic: Guide visitors to physical resources in their area-->
-		<section class="section">
-			<div class="container">
-				<h1>Help is in Reach</h1>
-				<br><br>
-				<h2 style="text-align: center" class="g-hed">Mental Health Facilities by State</h2>
-				<div class="row">
-					<div class="col-md-8" id="column1">
-						<div id="national-chart"></div>
-					</div>
-					<div class="col-md-4" id="column2">
-						<div class="row">
-							<div class="col-md-4" id="column3"></div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
+        <section class="section">
+            <div class="container">
+                <h1>Help is in Reach</h1>
+                <!--<br><br>-->
+                <h2 style="text-align: center" class="g-hed">Mental Health Facilities by State</h2>
+                <h3 style="text-align: left">There are over <span style="color:lightblue; font-weight: bold;">10,0000</span>
+                    facilities across the country dedicated to mental health.</h3>
+                <h3 style="text-align: left" >Click on a <span style="color:lightblue; font-weight: bold;">state</span>
+                    to view the facilities. Click on a <span style="color:lightblue; font-weight: bold;">dot</span>
+                    to see what services are offered by a particular facility.</h3>
+                <div class="row">
+                    <div class="col-md-8" id="column1">
+                        <div id="national-chart"></div>
+                    </div>
+                    <div class="col-md-4" id="column2">
+                        <div class="row">
+                            <div class="col-md-4" id="column3"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <!--Slide 6: More stories to help the user -->
         <section class="section" id='cloud2'>
@@ -173,7 +192,7 @@
 						<img src="img/daisy.jpg" alt="Avatar" style="width:90%;margin-left: 5%">
 						<div class="card-container">
 							<h2><b>Hope & Recovery</b></h2>
-							<h3 style="text-align: left">Read stories from survivors from the National Suicide Prevention Lifeline</h3>
+							<h3 style="text-align: left">Read stories about suicide survivors from the National Suicide Prevention Lifeline</h3>
 							<a style="font-size: 20px" href='https://suicidepreventionlifeline.org/stories/'>Read these stories</a>
 						</div>
 					</div>
@@ -232,6 +251,10 @@
                         <li>fullPage.js</li>
                         <li>nouislider.js</li>
 						<li>d3-tip.js</li>
+                        <li>Mike Bostock: <a href="https://bl.ocks.org/mbostock/2206590">Zoomable usa map</a></li>
+                        <li>Kevin Vanderbeken: <a href="https://bl.ocks.org/iamkevinv/0a24e9126cd2fa6b283c6f2d774b69a2">d3 v4 map updates</a></li>
+                        <li>Bill Morris:<a href="https://bl.ocks.org/wboykinm/dbbe50d1023f90d4e241712395c27fb3">USA Choropleth template</a></li>
+                        <li>Pablo Garcia Fernandez: <a href="https://codepen.io/anon/pen/OOKwRg">Responsive facility table</a></li>
                     </ul>
             </div>
         </section>

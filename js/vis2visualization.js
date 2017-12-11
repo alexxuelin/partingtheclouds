@@ -1,4 +1,4 @@
-// Viz 2 - Dots Visualization by Dylan de Waart
+// Page 3 - How are You Feeling (Dots Visualization) by Dylan de Waart
 
 DotsVisualization = function(_parentElement, _answers) {
 
@@ -69,10 +69,10 @@ DotsVisualization.prototype.initVis = function() {
 
     vis.svg = d3.select(vis.parentElement)
         .append("svg")
-            .attr("width", vis.width + vis.margin.left + vis.margin.right)
-            .attr("height", vis.height + vis.margin.top + vis.margin.bottom)
+        .attr("width", vis.width + vis.margin.left + vis.margin.right)
+        .attr("height", vis.height + vis.margin.top + vis.margin.bottom)
         .append("g")
-            .attr("transform", "translate(" + (vis.width/2) + "," + (vis.height/2) + ")");
+        .attr("transform", "translate(" + (vis.width/2) + "," + (vis.height/2) + ")");
 
 
 };
@@ -81,28 +81,63 @@ DotsVisualization.prototype.updateVis = function(answer) {
 
     vis=this;
 
-    $(".not-alone").hide();
-    //$("#vis2-caption").hide();
+    if (answer > -1) {
+        $(".not-alone").show();
+        $("#vis2-caption").html(vis.answers[answer].sentence).show();
+    }
+    else {
+        $(".not-alone").hide();
+    };
 
-    // d3.selectAll(".vis2-dot")
-    //     .transition()
-    //     .duration(500)
-    //     .attr("fill", backgroundColor)
-    //     .attr("stroke", backgroundColor);
+
+    d3.selectAll(".vis2-dot")
+        .remove();
+
+    // initial randomized grey dots pattern
+    var dots = vis.svg.selectAll(".vis2-dot")
+        .data(vis.noEmotion.nodes);
+
+    var updateSelection = dots.enter()
+        .append("circle")
+        .attr("class", "vis2-dot")
+        .attr('r', vis.r)
+        .attr("fill", function (d) {
+            return d.color;
+        })
+        .attr("stroke", function(d,i) {
+            if (i==0) {return "#b30000";}
+            else {return d.color;}
+        });
+
+    vis.simulation = d3.forceSimulation(vis.noEmotion.nodes);
+
+    vis.simulation
+        .velocityDecay(0.29)
+        .force('charge', d3.forceManyBody().strength(-22).distanceMax(40))
+        .force("collision", d3.forceCollide().radius(12))
+        .force("center", d3.forceCenter().x(0).y(0))
+        //.force("link", d3.forceLink(vis.noEmotion.edges).distance(1).strength(0.27))
+        .on('tick', function () {
+
+            updateSelection
+                .attr('cx', function (d) {
+                    return d.x;
+                })
+                .attr('cy', function (d) {
+                    return d.y;
+                });
+        });
+
+    // if answer selected bind new data and change simulation
+    if (answer > -1) {
 
         setTimeout(function () {
 
-            d3.selectAll(".vis2-dot")
-                .remove();
+            dots = vis.svg.selectAll(".vis2-dot")
+                .data(vis.emotions[answer].nodes);
 
-            // initial randomized grey dots pattern
-            var dots = vis.svg.selectAll(".vis2-dot")
-                .data(vis.noEmotion.nodes);
-
-            var updateSelection = dots.enter()
-                .append("circle")
-                .attr("class", "vis2-dot")
-                .attr('r', vis.r)
+            updateSelection = dots
+                .merge(dots)
                 .attr("fill", function (d) {
                     return d.color;
                 })
@@ -111,17 +146,25 @@ DotsVisualization.prototype.updateVis = function(answer) {
                     else {return d.color;}
                 });
 
-            vis.simulation = d3.forceSimulation(vis.noEmotion.nodes);
+
+            vis.simulation.nodes(vis.emotions[answer].nodes);
 
             vis.simulation
-                .velocityDecay(0.29)
-                .force('charge', d3.forceManyBody().strength(-22).distanceMax(40))
-                .force("collision", d3.forceCollide().radius(12))
-                .force("center", d3.forceCenter().x(0).y(0))
-                //.force("link", d3.forceLink(vis.noEmotion.edges).distance(1).strength(0.27))
+                .velocityDecay(0.7)
+                .force("collision", d3.forceCollide().radius(function (d) {
+                    if (d.group == "self" || d.group == "included") {
+                        return vis.r + 2
+                    }
+                    else {
+                        return 12
+                    }
+                }))
+                .force("link", d3.forceLink(vis.emotions[answer].edges).distance(1).strength(0.27))
                 .on('tick', function () {
 
                     updateSelection
+                        .transition()
+                        .duration(100)
                         .attr('cx', function (d) {
                             return d.x;
                         })
@@ -130,66 +173,15 @@ DotsVisualization.prototype.updateVis = function(answer) {
                         });
                 });
 
-            // if answer selected bind new data and change simulation
-            if (answer > -1) {
-
-                setTimeout(function () {
-
-                    $(".not-alone").show();
-                    $("#vis2-caption").html(vis.answers[answer].sentence).show();
 
 
-                    dots = vis.svg.selectAll(".vis2-dot")
-                        .data(vis.emotions[answer].nodes);
-
-                    updateSelection = dots
-                        .merge(dots)
-                        .attr("fill", function (d) {
-                            return d.color;
-                        })
-                        .attr("stroke", function(d,i) {
-                            if (i==0) {return "#b30000";}
-                            else {return d.color;}
-                        });
+            //vis.simulation.restart();
 
 
-                    vis.simulation.nodes(vis.emotions[answer].nodes);
-
-                    vis.simulation
-                        .velocityDecay(0.7)
-                        .force("collision", d3.forceCollide().radius(function (d) {
-                            if (d.group == "self" || d.group == "included") {
-                                return vis.r + 2
-                            }
-                            else {
-                                return 12
-                            }
-                        }))
-                        .force("link", d3.forceLink(vis.emotions[answer].edges).distance(1).strength(0.27))
-                        .on('tick', function () {
-
-                            updateSelection
-                                .transition()
-                                .duration(700)
-                                .attr('cx', function (d) {
-                                    return d.x;
-                                })
-                                .attr('cy', function (d) {
-                                    return d.y;
-                                });
-                        });
+        }, 500);
 
 
+    };
 
-                    //vis.simulation.restart();
-
-
-                }, 2500);
-
-
-            };
-
-        }, 750);
 };
-
 

@@ -1,5 +1,5 @@
 //Width, height of map, set zoom active state
-var widthv4 = 700,
+var widthv4 = 750,
     heightv4 = 470,
     active = d3.select(null);
 
@@ -39,9 +39,6 @@ var projection = d3.geoAlbersUsa() // updated for d3 v4
     .translate([widthv4 / 2, heightv4 / 2]);
 
 var zoom = d3.zoom()
-// no longer in d3 v4 - zoom initialises with zoomIdentity, so it's already at origin
-// .translate([0, 0])
-// .scale(1)
     .scaleExtent([1, 200])
     .on("zoom", zoomed);
 
@@ -64,7 +61,6 @@ svgv4.append("rect")
 var g = svgv4.append("g");
 
 svgv4.call(zoom); // delete this line to disable free zooming
-// .call(zoom.event); // not in d3 v4
 
 // define tool tip parameters
 var tool_tip = d3.tip()
@@ -323,7 +319,6 @@ d3.csv("data/vis4/healthfacilities.csv", function(data) {
         valueArray.push(d.value);
     });
 
-
     //brute force to the max
     alaskaData = data.filter(function(d){ return d.state == "AK"; });
     alabamaData = data.filter(function(d){ return d.state == "AL"; });
@@ -378,23 +373,6 @@ d3.csv("data/vis4/healthfacilities.csv", function(data) {
     wyomingData = data.filter(function(d){ return d.state == "WY"; });
 
 
-    console.log(hawaiiData);
-    // console.log(alabamaData);
-    // console.log(arkansasData);
-    // console.log(arizonaData);
-    // console.log(californiaData);
-    // console.log(coloradoData);
-    // console.log(connecticutData);
-    // console.log(districtOfColumbiaData);
-    // console.log(delawareData);
-    // console.log(floridaData);
-    // console.log(georgiaData);
-
-    // debugging
-//        console.log(stateDataArray);
-//        console.log(valueArray);
-    //console.log(floridaData);
-
     // setting values for choropleth color range
     var minValv4 = d3.min(valueArray);
     //console.log(minVal);
@@ -432,7 +410,6 @@ d3.csv("data/vis4/healthfacilities.csv", function(data) {
             }
         }
 
-
         // Bind the data to the SVG and create one path per GeoJSON feature
         g.selectAll("path")
             .data(json.features)
@@ -442,31 +419,12 @@ d3.csv("data/vis4/healthfacilities.csv", function(data) {
             .style("stroke", "grey")
             .style("stroke-width", "1")
             .style("fill", function(d) { return ramp(d.properties.value) })
-            //                .on("click", function(d){
-            //                    clicked(d.properties["abbr"], data);
-            //                });
             .on("click", clicked);
-        // need to get symbol from json
-
-//                    sendData = data.filter(function(c) { return c.state == d.properties["abbr"]; });
-//                    console.log(sendData);
-        //  clicked(sendData);
-//                    var name = d.properties["abbr"];
-//                    clicked(name, data);
-//                    console.log(d.properties["abbr"]);
-        //       });
-//                .on("click", function(d){
-//                    // need to get symbol from json
-//                    updateStateData(d.properties["abbr"], data);
-//                    console.log(d.properties["abbr"]);
-//                });
-        //.on("mouseover", tool_tip.show)
-        //.on("mouseout", tool_tip.hide);
 
         // setting values for and appending legend bar and key (y axis)
         var w = 140, h = 300;
 
-        var key = d3.select("svgv4")
+        var key = d3.select("#national-chart")
             .append("svg")
             .attr("width", w)
             .attr("height", h)
@@ -568,9 +526,6 @@ function clicked(d) {
     else if (name == "WV") { chosenStateData = westVirginiaData; }
     else if (name == "WY") { chosenStateData = wyomingData; }
 
-    // g.selectAll("circle")
-    //     .attr("class", "circlev4")
-    //     .attr("opacity", 0.8)
     g.selectAll("circle").classed("active", true);
 
     if (active.node() === this) return reset();
@@ -587,7 +542,6 @@ function clicked(d) {
 
     svgv4.transition()
         .duration(750)
-        // .call(zoom.translate(translate).scale(scale).event); // not in d3 v4
         .call( zoom.transform, d3.zoomIdentity.translate(translate[0],translate[1]).scale(scalev4) ); // updated for d3 v4
 
     // extra: showing circles for each facility
@@ -598,6 +552,7 @@ function clicked(d) {
         d.longitude = d.longitude;
         //console.log(d.longitude);
     });
+
     // Draw circles
     // create circles and append data
     var circle = g.selectAll("circle")
@@ -608,9 +563,9 @@ function clicked(d) {
         .merge(circle)
         .on("click", function(d){
             //console.log(d.name1);
-            // appending building information to column 3
+            // appending building information to column 2
             // TRAUMA SPS PRS CMHC PTSD SMA
-            document.getElementById("column3").innerHTML =
+            document.getElementById("column2").innerHTML =
                 "<table width=\"550\">" +
                 "<tr><td>" +'<span style="color:yellow">' + 'Facility: ' + '</span>' + d.TITLE + "</td></tr>"+
                 "<tr><td>" +'<span style="color:yellow">' + 'Address: ' + '</span>' + d.ADDR + "</td></tr>"+
@@ -622,15 +577,6 @@ function clicked(d) {
                 "<tr><td>" +'<span style="color:yellow">' + 'Suicide prevention services: ' + '</span>' + d.SPS + "</td></tr>"+
                 "<tr><td>" +'<span style="color:yellow">' + 'Trauma therapy: ' + '</span>' + d.TRAUMA + "</td></tr>"+
                 "<tr><td>" +'<span style="color:yellow">' + 'PTSD services: ' + '</span>' + d.PTSD + "</td></tr>"+  "</table>";
-        //         "<tr><td> Address: " + d.ADDR + "</td></tr>" +
-        //         "<tr><td> Website: " + d.WEBSITE + "</td></tr>" +
-        //         "<tr><td> Phone Number: " + d.PHONE + "</td></tr>" +
-        //         "<tr><td> State Mental Health Authority: " + d.SMA + "</td></tr>" +
-        //         "<tr><td> Community Mental Health Center: " + d.CMHC + "</td></tr>" +
-        //         "<tr><td> Psychosocial rehabilitation services: " + d.PRS + "</td></tr>" +
-        //         "<tr><td> Suicide prevention services: " + d.SPS + "</td></tr>" +
-        //         "<tr><td> Trauma therapy: " + d.TRAUMA + "</td></tr>" +
-        //         "<tr><td> PTSD services: " + d.PTSD + "</td></tr>" + "</table>";
         })
         .on("mouseover", tool_tip.show)
         .on("mouseout", tool_tip.hide)
@@ -646,13 +592,6 @@ function clicked(d) {
 
     circle.exit().remove();
 
-
-
-
-    //svgv4.call(tool_tip);
-
-    // });
-
 }
 
 function reset() {
@@ -666,13 +605,11 @@ function reset() {
 
     svgv4.transition()
         .duration(750)
-        // .call( zoom.transform, d3.zoomIdentity.translate(0, 0).scale(1) ); // not in d3 v4
         .call( zoom.transform, d3.zoomIdentity ); // updated for d3 v4
 }
 
 function zoomed() {
     g.style("stroke-width", 2 / d3.event.transform.k + "px");
-    // g.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")"); // not in d3 v4
     g.attr("transform", d3.event.transform); // updated for d3 v4
 }
 

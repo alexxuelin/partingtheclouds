@@ -1,5 +1,4 @@
-// Dylan de Waart
-//Data Set not necessary for Vis 1.
+// Title Page - Parting the Clouds (Pulse visualization) by Dylan de Waart
 
 /*
 WHO estimates 1 suicide per 40 seconds globally
@@ -10,14 +9,12 @@ Attempts are 20 times more frequent so around 1 attempt per 2 seconds
 
  */
 
-// adpated from an example by Scott White (https://bl.ocks.org/whitews/3073773f5f1fd58226ee)
-
 marginV1 = {top: 0, right: 0, bottom: 0, left: 0};
-widthV1 = 500 - marginV1.left - marginV1.right;
-heightV1 = 500 - marginV1.top - marginV1.bottom;
+widthV1 = 475 - marginV1.left - marginV1.right;
+heightV1 = 475 - marginV1.top - marginV1.bottom;
 
 var timer1 = {};
-var timer2 = {};
+
 
 var c = 0; // counter pulses
 
@@ -129,9 +126,3 @@ function startTime1() {
     }
 
 }
-
-
-
-
-
-
