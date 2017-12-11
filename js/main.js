@@ -55,9 +55,8 @@ $(document).ready(function() {
                 vis2.updateVis(-1);
             }
             if(index == 4){
-
-                var speed = 40;
                 if (document.getElementById("storm1").innerHTML.length == 0 && document.getElementById("storm2").innerHTML.length == 0 && document.getElementById("storm3").innerHTML.length == 0){
+                    var speed = 40;
                     var i = 0;
                     var txt = "All storms pass. Even the most brutal ones. And they will pass faster than you think.";
                     typeWriter_i();
@@ -68,9 +67,6 @@ $(document).ready(function() {
                             setTimeout(typeWriter_i, speed);
                         }
                     }
-                };
-
-                if (document.getElementById("storm2").innerHTML.length == 0 && document.getElementById("storm3").innerHTML.length == 0){
                     var j = 0;
                     var txtj = "According to Stumbling on Happiness by Harvard professor Daniel Gilbert, human beings tend to mispredict their own emotional responses to future events.";
                     setTimeout(typeWriter_j, 4000);
@@ -81,12 +77,10 @@ $(document).ready(function() {
                             setTimeout(typeWriter_j, speed);
                         }
                     }
-                };
 
-                if (document.getElementById("storm3").innerHTML.length == 0){
                     var l = 0;
                     var txtl = "On average, bad events proved less intense and more transient than test participants predicted.";
-                    setTimeout(typeWriter_l, 7000);
+                    setTimeout(typeWriter_l, 11000);
                     function typeWriter_l() {
                         if (l < txtl.length) {
                             document.getElementById("storm3").innerHTML += txtl.charAt(l);
@@ -94,7 +88,47 @@ $(document).ready(function() {
                             setTimeout(typeWriter_l, speed);
                         }
                     }
-                };
+                }
+
+                //     var speed = 40;
+                // if (document.getElementById("storm1").innerHTML.length == 0 && document.getElementById("storm2").innerHTML.length == 0 && document.getElementById("storm3").innerHTML.length == 0){
+                //     var i = 0;
+                //     var txt = "All storms pass. Even the most brutal ones. And they will pass faster than you think.";
+                //     typeWriter_i();
+                //     function typeWriter_i() {
+                //         if (i < txt.length) {
+                //             document.getElementById("storm1").innerHTML += txt.charAt(i);
+                //             i++;
+                //             setTimeout(typeWriter_i, speed);
+                //         }
+                //     }
+                // };
+                //
+                // if (document.getElementById("storm2").innerHTML.length == 0 && document.getElementById("storm3").innerHTML.length == 0){
+                //     var j = 0;
+                //     var txtj = "According to Stumbling on Happiness by Harvard professor Daniel Gilbert, human beings tend to mispredict their own emotional responses to future events.";
+                //     setTimeout(typeWriter_j, 4000);
+                //     function typeWriter_j() {
+                //         if (j < txtj.length) {
+                //             document.getElementById("storm2").innerHTML += txtj.charAt(j);
+                //             j++;
+                //             setTimeout(typeWriter_j, speed);
+                //         }
+                //     }
+                // };
+                //
+                // if (document.getElementById("storm3").innerHTML.length == 0){
+                //     var l = 0;
+                //     var txtl = "On average, bad events proved less intense and more transient than test participants predicted.";
+                //     setTimeout(typeWriter_l, 10000);
+                //     function typeWriter_l() {
+                //         if (l < txtl.length) {
+                //             document.getElementById("storm3").innerHTML += txtl.charAt(l);
+                //             l++;
+                //             setTimeout(typeWriter_l, speed);
+                //         }
+                //     }
+                // };
 
             }
             if(index == 5){
