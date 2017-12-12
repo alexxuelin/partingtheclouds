@@ -311,7 +311,6 @@ d3.csv("data/vis4/healthfacilities.csv", function(data) {
 
     });
 
-    console.log(ALASKA);
     // setting value array for choropleth
     var valueArray = [];
 
@@ -322,7 +321,7 @@ d3.csv("data/vis4/healthfacilities.csv", function(data) {
     //brute force to the max
     alaskaData = data.filter(function(d){ return d.state == "AK"; });
     alabamaData = data.filter(function(d){ return d.state == "AL"; });
-    arkansasData = data.filter(function(d){ return d.state == "AK"; });
+    arkansasData = data.filter(function(d){ return d.state == "AR"; });
     arizonaData = data.filter(function(d){ return d.state == "AZ"; });
     californiaData = data.filter(function(d){ return d.state == "CA"; });
     coloradoData = data.filter(function(d){ return d.state == "CO"; });
@@ -372,12 +371,9 @@ d3.csv("data/vis4/healthfacilities.csv", function(data) {
     westVirginiaData = data.filter(function(d){ return d.state == "WV"; });
     wyomingData = data.filter(function(d){ return d.state == "WY"; });
 
-
     // setting values for choropleth color range
     var minValv4 = d3.min(valueArray);
-    //console.log(minVal);
     var maxValv4 = d3.max(valueArray);
-    //console.log(maxVal);
     var ramp = d3.scaleLinear().domain([minValv4,maxValv4]).range([lowColorv4,highColorv4]);
 
 
@@ -389,11 +385,9 @@ d3.csv("data/vis4/healthfacilities.csv", function(data) {
 
             // Grab State Name
             var dataState = stateDataArray[i].state;
-            //var dataState = data[i].state;
 
             // Grab data value
             var dataValue = stateDataArray[i].value;
-            //var dataValue = data[i].value;
 
             // Find the corresponding state inside the GeoJSON
             for (var j = 0; j < json.features.length; j++) {
@@ -422,7 +416,7 @@ d3.csv("data/vis4/healthfacilities.csv", function(data) {
             .on("click", clicked);
 
         // setting values for and appending legend bar and key (y axis)
-        var w = 140, h = 300;
+        var w = 32, h = 300;
 
         var key = d3.select("#national-chart")
             .append("svg")
@@ -450,7 +444,7 @@ d3.csv("data/vis4/healthfacilities.csv", function(data) {
             .attr("stop-opacity", 1);
 
         key.append("rect")
-            .attr("width", w - 125)
+            .attr("width", 32)
             .attr("height", h)
             .style("fill", "url(#gradient)")
             .attr("transform", "translate(0,5)");
@@ -463,7 +457,7 @@ d3.csv("data/vis4/healthfacilities.csv", function(data) {
 
         key.append("g")
             .attr("class", "y axis")
-            .attr("transform", "translate(13,5)")
+            .attr("transform", "translate(0,5)")
             .call(yAxisv4);
 
     });
@@ -472,7 +466,6 @@ d3.csv("data/vis4/healthfacilities.csv", function(data) {
 function clicked(d) {
 
     var name = d.properties["abbr"];
-    console.log(name);
 
     if (name == "AK") { chosenStateData = alaskaData; }
     else if (name == "AL") { chosenStateData = alabamaData; }
@@ -548,9 +541,9 @@ function clicked(d) {
     chosenStateData.forEach(function(d) {
         // convert variables into numeric form
         d.latitude = d.latitude;
-        //console.log(d.latitude);
+
         d.longitude = d.longitude;
-        //console.log(d.longitude);
+
     });
 
     // Draw circles
@@ -562,7 +555,7 @@ function clicked(d) {
         .attr("class", "circlev4")
         .merge(circle)
         .on("click", function(d){
-            //console.log(d.name1);
+
             // appending building information to column 2
             // TRAUMA SPS PRS CMHC PTSD SMA
             document.getElementById("column2").innerHTML =
@@ -598,7 +591,8 @@ function reset() {
 
     g.selectAll("circle")
         .attr("class", "circlev4")
-        .attr("opacity", 0);
+        .attr("opacity", 0)
+        .on("mouseover", tool_tip.hide);
 
     active.classed("active", false);
     active = d3.select(null);

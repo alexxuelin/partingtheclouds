@@ -61,7 +61,7 @@ var bar_data;
 d3.csv("data/Vis3/byage.csv", function(error, byage) {
     // clean bar chart data
     byage.forEach(function(d){
-        for (i = 2008; i < 2016; i++)
+        for (var i = 2008; i < 2016; i++)
             d[i] = +d[i];
     });
 
@@ -123,12 +123,6 @@ function updateLineChart() {
     // var axes
     x.domain([d3.min(filtered_alldata, function(d) { return d.YEAR; }), d3.max(filtered_alldata, function(d) { return d.YEAR; })]);
     y.domain([d3.min(filtered_alldata, function(d) { return d[option]; })-0.5, d3.max(filtered_alldata, function(d) { return d[option]; })+0.5]);
-
-    // ticks!!!
-    // works but makes loading super slow
-    // var axisend = endyr + 1;
-    // var xAxis = d3.axisBottom(x).tickValues(d3.range(startyr, axisend)).tickFormat(d3.format(".0f"));
-    //var xAxis = d3.axisBottom(x).tickValues(x.ticks().concat(x.domain())).tickFormat(d3.format(".0f"));
 
     var xAxis = d3.axisBottom(x).tickValues(d3.range(startyr, endyr)).tickFormat(d3.format(".0f"));
     var yAxis = d3.axisLeft(y);
