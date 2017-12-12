@@ -42,5 +42,3 @@ vis3.js, and vis4.js are our own code, and are supplemented by the github exampl
 * Thank you to the CS 171 course staff, and to our project adviser Alex Abrahams for all of her support during this
 process.
 
-
-

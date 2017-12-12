@@ -374,6 +374,7 @@ d3.csv("data/vis4/healthfacilities.csv", function(data) {
     // setting values for choropleth color range
     var minValv4 = d3.min(valueArray);
     var maxValv4 = d3.max(valueArray);
+
     var ramp = d3.scaleLinear().domain([minValv4,maxValv4]).range([lowColorv4,highColorv4]);
 
 
@@ -556,13 +557,14 @@ function clicked(d) {
         .merge(circle)
         .on("click", function(d){
 
+
             // appending building information to column 2
             // TRAUMA SPS PRS CMHC PTSD SMA
             document.getElementById("column2").innerHTML =
                 "<table width=\"550\">" +
                 "<tr><td>" +'<span style="color:yellow">' + 'Facility: ' + '</span>' + d.TITLE + "</td></tr>"+
                 "<tr><td>" +'<span style="color:yellow">' + 'Address: ' + '</span>' + d.ADDR + "</td></tr>"+
-                "<tr><td>" +'<span style="color:yellow">' + 'Website: ' + '</span>' + d.WEBSITE + "</td></tr>"+
+                "<tr><td>" +'<span style="color:yellow">' + 'Website: ' + '</span>' + '<a href="'+ d.WEBSITE+ '">' + d.WEBSITE + '</a>' + "</td></tr>"+
                 "<tr><td>" +'<span style="color:yellow">' + 'Phone Number: ' + '</span>' + d.PHONE + "</td></tr>"+
                 "<tr><td>" +'<span style="color:yellow">' + 'State Mental Health Authority: ' + '</span>' + d.SMA + "</td></tr>"+
                 "<tr><td>" +'<span style="color:yellow">' + 'Community Mental Health Center: ' + '</span>' + d.CMHC + "</td></tr>"+
