@@ -1,8 +1,6 @@
-# partingtheclouds
-CS 171 Final Project
-
 # Parting the Clouds
 
+## Overview
 The main goal of this project is to provide users with relevant data on suicide, as it pertains to certain demogrpahics
 and resources. We are first displaying perecentages of suicidal thoughts and actions across different groups, and then
 showing users that they are not alone with certain feelings they may be having. The website also offers encouragement
@@ -29,12 +27,12 @@ vis3.js, and vis4.js are our own code, and are supplemented by the github exampl
 * [Youtube link to Screencast]()
 
 ## Data Sources
-* **Parting the clouds** - [American Foundation for Suicide Prevention*](https://afsp.org/about-suicide/suicide-statistics/)
+* **Parting the clouds** - [American Foundation for Suicide Prevention](https://afsp.org/about-suicide/suicide-statistics/)
 * **Thoughts, plans, attempts** - [Results from the 2015 National Survey on Drug Use and Health](https://www.samhsa.gov/data/sites/default/files/NSDUH-DR-FFR3-2015/NSDUH-DR-FFR3-2015.htm)
 * **How are you feeling** - [WHO](http://www.who.int/mental_health/prevention/suicide/suicideprevent/en/)
 * **It gets better** - Gilbert, Daniel T. Stumbling on Happiness. , 2007. Print.
 * **Help is in reach** - [Behavioral health treatment facilities in the U.S.](https://findtreatment.samhsa.gov/locator)
-             
+
 ## Acknowledgments
 
 * **Mike Bostock** - *Zoomable usa map* - [GitHub](https://bl.ocks.org/mbostock/2206590 )
