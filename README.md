@@ -28,11 +28,25 @@ vis3.js, and vis4.js are our own code, and are supplemented by the github exampl
 * [GitHub URL to Project](https://alexxuelin.github.io/partingtheclouds/)
 * [Youtube link to Screencast]()
 
+## Data Sources
+* **Parting the clouds** - [American Foundation for Suicide Prevention*](https://afsp.org/about-suicide/suicide-statistics/)
+* **Thoughts, plans, attempts** - [Results from the 2015 National Survey on Drug Use and Health](https://www.samhsa.gov/data/sites/default/files/NSDUH-DR-FFR3-2015/NSDUH-DR-FFR3-2015.htm)
+* **How are you feeling** - [WHO](http://www.who.int/mental_health/prevention/suicide/suicideprevent/en/)
+* **It gets better** - Gilbert, Daniel T. Stumbling on Happiness. , 2007. Print.
+* **Help is in reach** - [Behavioral health treatment facilities in the U.S.](https://findtreatment.samhsa.gov/locator)
+             
 ## Acknowledgments
 
 * **Mike Bostock** - *Zoomable usa map* - [GitHub](https://bl.ocks.org/mbostock/2206590 )
 * **Kevin Vanderbeken** - *d3 v4 map updates* - [GitHub](https://bl.ocks.org/iamkevinv/0a24e9126cd2fa6b283c6f2d774b69a2)
 * **Bill Morris** - *usa choropleth template* - [GitHub](https://bl.ocks.org/wboykinm/dbbe50d1023f90d4e241712395c27fb3)
-* Inspiration
+
 * Thank you to the CS 171 course staff, and to our project adviser Alex Abrahams for all of her support during this
 process.
+
+
+
+
+
+
+

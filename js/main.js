@@ -63,7 +63,7 @@ $(document).ready(function() {
                     var i = 0;
                     var txt = "All storms pass. Even the most brutal ones. And they will pass faster than you think." +
                         "\n" +
-                        "According to Stumbling on Happiness by Harvard professor Daniel Gilbert, human beings tend to mispredict their own emotional responses to future events." +
+                        "According to 'Stumbling on Happiness' by Harvard professor Daniel Gilbert, human beings tend to mispredict their own emotional responses to future events." +
                         "\n" +
                         "On average, bad events proved less intense and more transient than test participants predicted.";
                     typeWriter_i();
