@@ -24,7 +24,7 @@ vis3.js, and vis4.js are our own code, and are supplemented by the github exampl
 ## Links
 
 * [GitHub URL to Project](https://alexxuelin.github.io/partingtheclouds/)
-* [Youtube link to Screencast](https://youtu.be/WtK8rscIB9w)
+* [Youtube link to Screencast](https://youtu.be/WtK8rscIB9w) Note that you need to disable Adblocker, otherwise console will have 2 errors.
 
 ## Data Sources
 * **Parting the clouds** - [National Health and Nutrition Examination Survey](https://wwwn.cdc.gov/Nchs/Nhanes/2013-2014/DPQ_H.htm) and [National Institute of Mental Health](https://www.nimh.nih.gov/health/statistics/prevalence/any-anxiety-disorder-among-adults.shtml)
@@ -41,10 +41,6 @@ vis3.js, and vis4.js are our own code, and are supplemented by the github exampl
 
 * Thank you to the CS 171 course staff, and to our project adviser Alex Abrahams for all of her support during this
 process.
-
-
-
-
 
 
 
