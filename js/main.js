@@ -7,6 +7,7 @@ var colorScheme = ['#94618E', '#8c96c6', '#b3cde3', '#b2e2e2', '#66c2a4','#2ca25
 
 $(document).ready(function() {
     $('#fullpage').fullpage({
+
         scrollOverflow: true,
         responsiveWidth: 900,
         navigation: true,

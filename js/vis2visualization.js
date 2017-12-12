@@ -17,7 +17,7 @@ DotsVisualization = function(_parentElement, _answers) {
 };
 
 DotsVisualization.prototype.initVis = function() {
-    vis=this;
+    var vis=this;
 
     // create array with 100 default grey dots (no emotion selected)
     vis.noEmotion.nodes = [];
@@ -79,7 +79,7 @@ DotsVisualization.prototype.initVis = function() {
 
 DotsVisualization.prototype.updateVis = function(answer) {
 
-    vis=this;
+    var vis=this;
 
     if (answer > -1) {
         $(".not-alone").show();
