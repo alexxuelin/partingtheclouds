@@ -14,7 +14,7 @@ vis3.js, and vis4.js are our own code, and are supplemented by the github exampl
 
 ## Built With
 
-* [fullpage]https://alvarotrigo.com/fullPage/) - The web framework used
+* [fullpage](https://alvarotrigo.com/fullPage/) - The web framework used
 * [ColorBrewer](https://maven.apache.org/) - Color Schemes
 
 ## Authors
@@ -25,7 +25,7 @@ vis3.js, and vis4.js are our own code, and are supplemented by the github exampl
 
 ## Links
 
-* [GitHub URL to Project]()
+* [GitHub URL to Project](https://alexxuelin.github.io/partingtheclouds/)
 * [Youtube link to Screencast]()
 
 ## Acknowledgments
