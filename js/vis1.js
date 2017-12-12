@@ -1,12 +1,8 @@
 // Title Page - Parting the Clouds (Pulse visualization) by Dylan de Waart
 
 /*
-WHO estimates 1 suicide per 40 seconds globally
-- https://www.befrienders.org/suicide-statistics
-
-Attempts are 20 times more frequent so around 1 attempt per 2 seconds
-- source: https://en.wikipedia.org/wiki/Epidemiology_of_suicide
-
+WHO
+http://www.who.int/mental_health/prevention/suicide/suicideprevent/en/
  */
 
 marginV1 = {top: 0, right: 0, bottom: 0, left: 0};
