@@ -27,7 +27,7 @@ vis3.js, and vis4.js are our own code, and are supplemented by the github exampl
 * [Youtube link to Screencast]()
 
 ## Data Sources
-* **Parting the clouds** - [American Foundation for Suicide Prevention](https://afsp.org/about-suicide/suicide-statistics/)
+* **Parting the clouds** - [National Health and Nutrition Examination Survey](https://wwwn.cdc.gov/Nchs/Nhanes/2013-2014/DPQ_H.htm) and [National Institute of Mental Health](https://www.nimh.nih.gov/health/statistics/prevalence/any-anxiety-disorder-among-adults.shtml)
 * **Thoughts, plans, attempts** - [Results from the 2015 National Survey on Drug Use and Health](https://www.samhsa.gov/data/sites/default/files/NSDUH-DR-FFR3-2015/NSDUH-DR-FFR3-2015.htm)
 * **How are you feeling** - [WHO](http://www.who.int/mental_health/prevention/suicide/suicideprevent/en/)
 * **It gets better** - Gilbert, Daniel T. Stumbling on Happiness. , 2007. Print.
